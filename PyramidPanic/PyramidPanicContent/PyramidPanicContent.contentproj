@@ -42,6 +42,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StartScene\Background.png">
+      <Name>Background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScene\Button_help.png">
+      <Name>Button_help</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="StartScene\Button_load.png">
+      <Name>Button_load</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="StartScene\Button_quit.png">
+      <Name>Button_quit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="StartScene\Button_scores.png">
+      <Name>Button_scores</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="StartScene\Button_start.png">
+      <Name>Button_start</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="StartScene\Title.png">
       <Name>Title</Name>
       <Importer>TextureImporter</Importer>

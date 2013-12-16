@@ -11,13 +11,13 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class PlayScene : IState
+    public class ScoreScene : IState
     {
         //FieldAccessException van decimal class PlayScene
         private PyramidPanic game;
 
         // Constructor van PlayScene-class krijgt een object game mee van het type PyramidPanic
-        public PlayScene(PyramidPanic game)
+        public ScoreScene(PyramidPanic game)
         {
             this.game = game;
         }
@@ -54,3 +54,4 @@ namespace PyramidPanic
         }
     }
 }
+

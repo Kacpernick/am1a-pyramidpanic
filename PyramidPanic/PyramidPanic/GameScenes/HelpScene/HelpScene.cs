@@ -9,47 +9,53 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
 namespace PyramidPanic
 {
-    public class HelpScene : IState //De classe implementeert de interface
-    {
-        //Fields van de classe
-        private PyramidPanic game;
+   public class HelpScene : IState
 
-        //Construstor van de StartScene
+    {
+         //FieldAccessException van decimal class PlayScene
+        private PyramidPanic game;
+   
         public HelpScene(PyramidPanic game)
         {
             this.game = game;
         }
-
-        //Geeft startward
-        public void Initialize()
+        
+        //initialize methode. Deze methode initialiseert (geeft startwaarden aan variabelen)
+        //void wil zeggen dat er niets teruggegeven wordt.
+        public void initialize()
         {
-
+                
         }
 
-        //Deze methode maakt nieuwe objecten
+        //loadcontent methode. Deze methode maakt nieuwe objecten aan van de verschillende
+        //classes.
         public void LoadContent()
         {
 
         }
 
-        //Deze methode word normaal 60 maal per seconde aangeroepen.
+        //update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
+        //en update alle variabelen, methods enz...
         public void Update(GameTime gameTime)
         {
+            if (Input.EdgeDetectKeyDown(Keys.Right))
             {
-                if (Input.EdgeDetectKeyDown(Keys.Right))
-                {
-                    this.game.IState = this.game.StartScene;
-                }
+                this.game.IState = this.game.StartScene;
+            }
+
+            if (Input.EdgeDetectKeyDown(Keys.Left))
+            {
+                this.game.IState = this.game.PlayScene;
             }
         }
 
-        //Deze methode word normaal 60 maal per seconde aangeroepen en tekent de textures op het canvas.
+        //draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en 
+        // tekent de textures op het canvas
         public void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.Navy);
+            this.game.GraphicsDevice.Clear(Color.DeepPink);
         }
     }
 }

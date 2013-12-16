@@ -9,42 +9,53 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
 namespace PyramidPanic
 {
-    public class GameOverScene : IState //De classe implementeert de interface
+    public class GameOverScene : IState
     {
-        //Fields van de classe
+        //FieldAccessException van decimal class PlayScene
         private PyramidPanic game;
 
-        //Construstor van de StartScene
+        // Constructor van PlayScene-class krijgt een object game mee van het type PyramidPanic
         public GameOverScene(PyramidPanic game)
         {
             this.game = game;
         }
 
-        //Geeft startward
-        public void Initialize()
+        //initialize methode. Deze methode initialiseert (geeft startwaarden aan variabelen)
+        //void wil zeggen dat er niets teruggegeven wordt.
+        public void initialize()
         {
 
         }
 
-        //Deze methode maakt nieuwe objecten
+        //loadcontent methode. Deze methode maakt nieuwe objecten aan van de verschillende
+        //classes.
         public void LoadContent()
         {
 
         }
 
-        //Deze methode word normaal 60 maal per seconde aangeroepen.
+        //update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
+        //en update alle variabelen, methods enz...
         public void Update(GameTime gameTime)
         {
+            if (Input.EdgeDetectKeyDown(Keys.Right))
+            {
+                this.game.IState = this.game.HelpScene;
+            }
 
+            if (Input.EdgeDetectKeyDown(Keys.Left))
+            {
+                this.game.IState = this.game.PlayScene;
+            }
         }
 
-        //Deze methode word normaal 60 maal per seconde aangeroepen en tekent de textures op het canvas.
+        //draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en 
+        // tekent de textures op het canvas
         public void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.PapayaWhip);
+            this.game.GraphicsDevice.Clear(Color.LemonChiffon);
         }
     }
 }

@@ -13,30 +13,55 @@ namespace PyramidPanic
 {
     public class Image
     {
-        //Fields
+        //fields
+        //maak een variabele (reference) aan van het type Texture2D met de naam texture
         private Texture2D texture;
-        //Maak een Rectangle
+
+
+        //Maak een variabele aan (reference) aan van het type Color met de naam color
+        private Color color = Color.White;
+
+        //maak een rectangle voor het detecteren van collisions
         private Rectangle rectangle;
 
+        //maak een variabele aan om de game instantie in op te slaan.
         private PyramidPanic game;
 
-        //Constructor
-        public Image(PyramidPanic game , String pathnaamAsset, Vector2 position)
+        #region Properties
+
+        public Color Color
         {
-            this.texture = game.Content.Load<Texture2D>(pathnaamAsset);
-            this.rectangle = new Rectangle((int)position.X,
-                                            (int)position.Y,
-                                            this.texture.Width,
-                                            this.texture.Height);
+            get { return this.color; }
+            set { this.color = value; }
         }
 
-        //Update
+        public Rectangle Rectangle
+        {
+            get { return this.rectangle; }
+        }
+        #endregion
 
-        //Draw
+        //constructor
+        public Image(PyramidPanic game, String pathnameAsset, Vector2 position)
+        {
+            this.game = game;
+            this.texture = game.Content.Load<Texture2D>(pathnameAsset);
+            this.rectangle = new Rectangle((int)position.X,
+                                           (int)position.Y,
+                                           this.texture.Width,
+                                           this.texture.Height);
+        }
+
+
+        //update
+
+
+        //draw
         public void Draw(GameTime gameTime)
         {
-            this.game.Spritebatch.Draw(this.texture, this.rectangle, Color.Black);
+            this.game.SpriteBatch.Draw(this.texture, this.rectangle, this.color);
         }
-        //Helper
+
+        //helper Methods
     }
 }

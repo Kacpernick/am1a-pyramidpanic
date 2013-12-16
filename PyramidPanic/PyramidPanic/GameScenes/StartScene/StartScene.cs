@@ -1,5 +1,4 @@
-﻿// Met using kan je een xna codebibliotheek toevoegen
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -10,53 +9,69 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
 namespace PyramidPanic
 {
-   public class StartScene : IState //De classe implementeert de interface
+    public class StartScene : IState //de class startscene implementeert de interface IState
     {
-        //Fields van de classe
+        //FieldAccessException van decimal class StartScene
         private PyramidPanic game;
-        private Image background , title;
 
-        //Construstor van de StartScene
+        // twee nieuwe instaties Background, title Gemaakt.
+        private Image background;
+        private Image title;
+
+        //Maak een variabele (reference) aan van de Menu class genaamd menu
+        private Menu menu;
+
+        // Constructor van StartScene-class krijgt een object game mee van het type PyramidPanic
         public StartScene(PyramidPanic game)
         {
             this.game = game;
-            this.Initialize();
+
+            //roep de initialize method aan
+            this.initialize();
         }
 
-        //Geeft startward
-        public void Initialize()
+        //initialize methode. Deze methode initialiseert (geeft startwaarden aan variabelen)
+        //void wil zeggen dat er niets teruggegeven wordt.
+        public void initialize()
         {
-
+            //roep de loadcontent method aan
+            this.LoadContent();
         }
 
-        //Deze methode maakt nieuwe objecten
+        //loadcontent methode. Deze methode maakt nieuwe objecten aan van de verschillende
+        //classes.
         public void LoadContent()
         {
-            this.background = new Image(this.game, @"", Vector2.Zero);
-            this.title = new Image(this.game, @"", Vector2.Zero);
+            // nu maken we een object aan (instantie van de class Image)
+            this.background = new Image(this.game, @"StartScene\Background", Vector2.Zero);
+            this.title = new Image(this.game, @"StartScene\Title", new Vector2(100f, 30f));
+            this.menu = new Menu(this.game);
         }
 
-        //Deze methode word normaal 60 maal per seconde aangeroepen.
+        //update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
+        //en update alle variabelen, methods enz...
         public void Update(GameTime gameTime)
         {
-            if (Input.EdgeDetectKeyDown(Keys.Right) || Input.EdgeDetectMousePressLeft())
-            {
-                this.game.IState = this.game.PlayScene;
-            }
-
-            if (Input.EdgeDetectKeyDown(Keys.Right))
-            {
-                this.game.IState = this.game.PlayScene;
-            }
+            this.menu.Update(gameTime);
         }
 
-        //Deze methode word normaal 60 maal per seconde aangeroepen en tekent de textures op het canvas.
+        //draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en 
+        // tekent de textures op het canvas
         public void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.Azure);
+            this.game.GraphicsDevice.Clear(Color.DarkOrange);
+
+            //Roep de draw method aan van het beackground object
+            this.background.Draw(gameTime);
+
+            //rRoep de Draw method aan van het title object
+            this.title.Draw(gameTime);
+
+            //Roep de draw method aan van het menu object
+            this.menu.Draw(gameTime);
         }
+
     }
 }
