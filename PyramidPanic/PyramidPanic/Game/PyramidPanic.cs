@@ -23,6 +23,7 @@ namespace PyramidPanic
         private PlayScene playScene;
         private HelpScene helpScene;
         private GameOverScene gameOverScene;
+        private QuitScene quitScene;
         private LoadScene loadScene;
         private ScoreScene scoreScene;
 
@@ -63,6 +64,13 @@ namespace PyramidPanic
         public GameOverScene GameOverScene
         {
             get { return this.gameOverScene; }
+        }
+
+        //maak het field this.GameoverScene beschikbaar buiten de class d.m.v een
+        //Property StartScene
+        public QuitScene QuitScene
+        {
+            get { return this.quitScene; }
         }
 
         //maak het field this.GameoverScene beschikbaar buiten de class d.m.v een
@@ -131,6 +139,7 @@ namespace PyramidPanic
             this.helpScene = new HelpScene(this);
             this.scoreScene = new ScoreScene(this);
             this.gameOverScene = new GameOverScene(this);
+            this.quitScene = new QuitScene(this);
             this.loadScene = new LoadScene(this);
 
             this.iState = this.startScene;
