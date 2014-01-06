@@ -16,6 +16,8 @@ namespace PyramidPanic
         //FieldAccessException van decimal class PlayScene
         private PyramidPanic game;
         private Scorpion scorpion;
+        private Beetle beetle;
+        private Explorer explorer;
 
         // Constructor van PlayScene-class krijgt een object game mee van het type PyramidPanic
         public PlayScene(PyramidPanic game)
@@ -36,6 +38,8 @@ namespace PyramidPanic
         public void LoadContent()
         {
             this.scorpion = new Scorpion(this.game);
+            this.beetle = new Beetle(this.game);
+            this.explorer = new Explorer(this.game);
         }
 
         //update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
@@ -47,6 +51,8 @@ namespace PyramidPanic
                 this.game.IState = this.game.StartScene;
             }
             this.scorpion.Update(gameTime);
+            this.beetle.Update(gameTime);
+            this.explorer.Update(gameTime);
         }
 
         //draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en 
@@ -55,6 +61,8 @@ namespace PyramidPanic
         {
             this.game.GraphicsDevice.Clear(Color.White);
             this.scorpion.Draw(gameTime);
+            this.beetle.Draw(gameTime);
+            this.explorer.Draw(gameTime);
         }
     }
 }

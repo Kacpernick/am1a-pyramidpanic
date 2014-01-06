@@ -11,13 +11,13 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class Scorpion : AnimatedSprite
+    public class Beetle : AnimatedSprite
     {
         //Fields
 
         private PyramidPanic game;
         private Texture2D texture;
-        private int speed = 2;
+        private int speed = -2;
 
         //Properties
         public PyramidPanic Game
@@ -32,29 +32,31 @@ namespace PyramidPanic
 
         //Constructor
 
-        public Scorpion(PyramidPanic game) : base(game)
+        public Beetle(PyramidPanic game): base(game)
         {
             this.game = game;
-            this.texture = game.Content.Load<Texture2D>(@"Scorpion\Scorpion");
+            this.texture = game.Content.Load<Texture2D>(@"Beetle\Beetle");
+            this.destinationRectangle.X = 0;
+            this.destinationRectangle.X = 480;
         }
 
         //Update
 
         public void Update(GameTime gameTime)
         {
-            if (this.destinationRectangle.X > (640 - 32) || this.destinationRectangle.X < 0)
+            if (this.destinationRectangle.Y > (480 - 32) || this.destinationRectangle.Y < 0)
             {
                 if (this.speed > 0)
                 {
-                    this.effect = SpriteEffects.FlipHorizontally;
+                    this.effect = SpriteEffects.None;
                 }
                 else
                 {
-                    this.effect = SpriteEffects.None;
+                    this.effect = SpriteEffects.FlipVertically;
                 }
                 this.speed = this.speed * -1;
             }
-            this.destinationRectangle.X += this.speed;
+            this.destinationRectangle.Y += this.speed;
             base.Update(gameTime);
         }
 
