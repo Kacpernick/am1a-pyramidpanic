@@ -15,25 +15,27 @@ namespace PyramidPanic
     {
         //FieldAccessException van decimal class PlayScene
         private PyramidPanic game;
+        private Scorpion scorpion;
 
         // Constructor van PlayScene-class krijgt een object game mee van het type PyramidPanic
         public PlayScene(PyramidPanic game)
         {
             this.game = game;
+            this.Initialize();
         }
 
         //initialize methode. Deze methode initialiseert (geeft startwaarden aan variabelen)
         //void wil zeggen dat er niets teruggegeven wordt.
-        public void initialize()
+        public void Initialize()
         {
-
+            this.LoadContent();
         }
 
         //loadcontent methode. Deze methode maakt nieuwe objecten aan van de verschillende
         //classes.
         public void LoadContent()
         {
-
+            this.scorpion = new Scorpion(this.game);
         }
 
         //update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
@@ -44,13 +46,15 @@ namespace PyramidPanic
             {
                 this.game.IState = this.game.StartScene;
             }
+            this.scorpion.Update(gameTime);
         }
 
         //draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en 
         // tekent de textures op het canvas
         public void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.Black);
+            this.game.GraphicsDevice.Clear(Color.White);
+            this.scorpion.Draw(gameTime);
         }
     }
 }

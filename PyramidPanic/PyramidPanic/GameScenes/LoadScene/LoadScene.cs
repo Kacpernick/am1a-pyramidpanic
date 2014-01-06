@@ -50,7 +50,7 @@ namespace PyramidPanic
         // tekent de textures op het canvas
         public void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.Black);
+            this.game.GraphicsDevice.Clear(Color.Chocolate);
         }
     }
 }
