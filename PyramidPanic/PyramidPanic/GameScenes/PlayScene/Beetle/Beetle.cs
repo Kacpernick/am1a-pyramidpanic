@@ -18,8 +18,14 @@ namespace PyramidPanic
         private PyramidPanic game;
         private Texture2D texture;
         private int speed = -2;
+        private IBeetleState state;
 
         //Properties
+        public IBeetleState State
+        {
+            set { this.state = value; }
+        }
+
         public PyramidPanic Game
         {
             get { return this.game; }
@@ -31,7 +37,6 @@ namespace PyramidPanic
         }
 
         //Constructor
-
         public Beetle(PyramidPanic game): base(game)
         {
             this.game = game;
