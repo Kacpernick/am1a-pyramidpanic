@@ -14,18 +14,20 @@ namespace PyramidPanic
     public abstract class AnimatedSprite
     {
         //Fields
-        private PyramidPanic game;
         protected Rectangle destinationRectangle, sourceRectangle;
         private float timer = 0f;
         protected SpriteEffects effect;
+        private IAnimatedSprite iAnimatedSprite;
+        private Vector2 pivot;
         //Propeties
 
         //Constructor
-        public AnimatedSprite(PyramidPanic game)
+        public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
         {
-            this.game = game;
+            this.iAnimatedSprite = iAnimatedSprite;
             this.sourceRectangle = new Rectangle(64, 0, 32, 32);
-            this.destinationRectangle = new Rectangle(100, 200, 32, 32);
+            this.pivot = new Vector2(16f,16);
+
             this.effect = SpriteEffects.None;
         }
 
@@ -50,16 +52,16 @@ namespace PyramidPanic
         }
 
         //Draw
-        public void Draw(GameTime gameTime,Texture2D texture)
+        public void Draw(GameTime gameTime)
         {
-            this.game.SpriteBatch.Draw(texture,
-                                        this.destinationRectangle,
-                                        this.sourceRectangle,
-                                        Color.White,
-                                        0f,
-                                        Vector2.Zero,
-                                        this.effect,
-                                        0f);
+            this.iAnimatedSprite.Game.SpriteBatch.Draw(this.iAnimatedSprite.Texture,
+                                                this.destinationRectangle,
+                                                this.sourceRectangle,
+                                                Color.White,
+                                                0f,
+                                                this.pivot,
+                                                this.effect,
+                                                0f);
         }
     }
 }

@@ -9,14 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
 namespace PyramidPanic
 {
-    public interface IEntityState
+    public interface IAnimatedSprite
     {
-        //Elke toestand van Beetle class implementeert (past toe) de interface IBeetleState
-        //Deze interface eist dan dat de toestanden een Update en een Draw methode hebben.
+        PyramidPanic Game {get;}
+        Texture2D Texture {get;}
+
         void Update(GameTime gameTime);
-        void Draw(GameTime gameTime);
     }
 }

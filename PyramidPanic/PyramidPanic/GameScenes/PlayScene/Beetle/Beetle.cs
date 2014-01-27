@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Met using kan je een XNA codebibliotheek toevoegen en gebruiken in je class
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -11,65 +12,71 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class Beetle : AnimatedSprite
+    public class Beetle : IAnimatedSprite
     {
         //Fields
-
         private PyramidPanic game;
+        private IEntityState state;
         private Texture2D texture;
-        private int speed = -2;
-        private IBeetleState state;
+        private int speed = 2;
+        private Vector2 position;
 
-        //Properties
-        public IBeetleState State
+        //Maak van iedere toestand (state) een field
+        private WalkUp walkUp;
+        private WalkDown walkDown;
+
+        //properties
+        public WalkUp WalkUp
+        {
+            get { return this.walkUp; }
+        }
+        public WalkDown WalkDown
+        {
+            get { return this.walkDown; }
+        }
+        public Vector2 Position
+        {
+            get { return this.position; }
+            set { this.position = value; }
+        }
+        public IEntityState State
         {
             set { this.state = value; }
         }
-
         public PyramidPanic Game
         {
             get { return this.game; }
         }
-
+        public int Speed
+        {
+            get { return this.speed; }
+        }
         public Texture2D Texture
         {
             get { return this.texture; }
         }
 
         //Constructor
-        public Beetle(PyramidPanic game): base(game)
+        public Beetle(PyramidPanic game, Vector2 position)
         {
             this.game = game;
+            this.position = position;
             this.texture = game.Content.Load<Texture2D>(@"Beetle\Beetle");
-            this.destinationRectangle.X = 0;
-            this.destinationRectangle.X = 480;
+            this.walkUp = new WalkUp(this);
+            this.walkDown = new WalkDown(this);
+            this.state = this.walkUp;
         }
 
         //Update
-
         public void Update(GameTime gameTime)
         {
-            if (this.destinationRectangle.Y > (480 - 32) || this.destinationRectangle.Y < 0)
-            {
-                if (this.speed > 0)
-                {
-                    this.effect = SpriteEffects.None;
-                }
-                else
-                {
-                    this.effect = SpriteEffects.FlipVertically;
-                }
-                this.speed = this.speed * -1;
-            }
-            this.destinationRectangle.Y += this.speed;
-            base.Update(gameTime);
+            this.state.Update(gameTime);
         }
 
         //Draw
-
         public void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime, this.texture);
+            this.state.Draw(gameTime);
         }
     }
 }

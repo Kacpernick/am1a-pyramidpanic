@@ -11,15 +11,28 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class Scorpion : AnimatedSprite
+    public class Scorpion : IAnimatedSprite
     {
         //Fields
 
         private PyramidPanic game;
         private Texture2D texture;
         private int speed = 2;
+        private IEntityState state;
+        private Vector2 position;
 
         //Properties
+        public Vector2 Position
+        {
+            get { return this.position; }
+            set { this.position = value; }
+        }
+
+        public IEntityState State
+        {
+            set { this.state = value; }
+        }
+
         public PyramidPanic Game
         {
             get { return this.game; }
@@ -30,39 +43,33 @@ namespace PyramidPanic
             get { return this.texture; }
         }
 
-        //Constructor
+        public int Speed
+        {
+            get { return this.speed; }
+        }
 
-        public Scorpion(PyramidPanic game) : base(game)
+        //Constructor
+        public Scorpion(PyramidPanic game, Vector2 position)
         {
             this.game = game;
+            this.position = position;
             this.texture = game.Content.Load<Texture2D>(@"Scorpion\Scorpion");
+            this.state = new WalkRight(this);
+            //this.state = new WalkDown(this);
         }
 
         //Update
 
         public void Update(GameTime gameTime)
         {
-            if (this.destinationRectangle.X > (640 - 32) || this.destinationRectangle.X < 0)
-            {
-                if (this.speed > 0)
-                {
-                    this.effect = SpriteEffects.FlipHorizontally;
-                }
-                else
-                {
-                    this.effect = SpriteEffects.None;
-                }
-                this.speed = this.speed * -1;
-            }
-            this.destinationRectangle.X += this.speed;
-            base.Update(gameTime);
+            this.state.Update(gameTime);
         }
 
         //Draw
 
         public void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime, this.texture);
+            this.state.Draw(gameTime);
         }
     }
 }
