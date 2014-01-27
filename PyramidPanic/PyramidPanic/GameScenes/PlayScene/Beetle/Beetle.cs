@@ -55,7 +55,7 @@ namespace PyramidPanic
         {
             get { return this.texture; }
         }
-
+        
         //Constructor
         public Beetle(PyramidPanic game, Vector2 position)
         {
@@ -70,13 +70,13 @@ namespace PyramidPanic
         //Update
         public void Update(GameTime gameTime)
         {
-            this.state.Update(gameTime);
+           this.state.Update(gameTime);
         }
 
         //Draw
         public void Draw(GameTime gameTime)
         {
-            this.state.Draw(gameTime);
+            this.state.Draw(gameTime);                   
         }
     }
 }
