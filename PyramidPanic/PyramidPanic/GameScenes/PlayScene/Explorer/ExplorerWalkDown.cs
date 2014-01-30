@@ -17,7 +17,7 @@ namespace PyramidPanic
     
     public class ExplorerWalkDown : AnimatedSprite, IEntityState
     {
-        //Fields
+        //Fields van de class ExplorerWalkDown
         private Explorer explorer;
         private Vector2 velocity;
 
