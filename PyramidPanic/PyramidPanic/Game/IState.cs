@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    //Dat is de interface genamd IState met de Update methode
+    //Dat is de interface genamd IState met de Update methode met de Draw methode
     public interface IState
     {
         void Update(GameTime gameTime);
