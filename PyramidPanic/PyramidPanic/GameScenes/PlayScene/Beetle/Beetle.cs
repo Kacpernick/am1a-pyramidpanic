@@ -14,7 +14,7 @@ namespace PyramidPanic
 {
     public class Beetle : IAnimatedSprite
     {
-        //Fields
+        //Fields van de classe Beetle
         private PyramidPanic game;
         private IEntityState state;
         private Texture2D texture;

@@ -21,7 +21,7 @@ namespace PyramidPanic
         private Beetle beetle;
         private Vector2 velocity;
 
-        //Contstructor
+        //Contstructor van de classe WalkUp
         public WalkUp(Beetle beetle) : base(beetle)
         {
             this.beetle = beetle;
