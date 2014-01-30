@@ -14,7 +14,7 @@ namespace PyramidPanic
 {
     public class Explorer : IAnimatedSprite
     {
-        //Fields van de clase Explorer
+        //Fields van de clase Explorer die ervt van de IAnimatedSprite
         private PyramidPanic game;
         private IEntityState state;
         private Texture2D texture;
