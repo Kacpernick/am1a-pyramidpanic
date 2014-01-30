@@ -24,11 +24,13 @@ namespace PyramidPanic
         private WalkRight walkRight;
 
 
-        //properties
+        //Properties
+        //Loop naar links geter
         public WalkLeft WalkLeft
         {
             get { return this.walkLeft; }
         }
+        //loop naar rechts geter
         public WalkRight WalkRight
         {
             get { return this.walkRight; }
