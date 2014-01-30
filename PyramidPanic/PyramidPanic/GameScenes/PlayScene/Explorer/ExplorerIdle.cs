@@ -17,7 +17,7 @@ namespace PyramidPanic
     
     public class ExplorerIdle : AnimatedSprite, IEntityState
     {
-        //Fields van de classe ExplorerIdle
+        //Fields van de classe ExplorerIdle die ervt van de clase AnimatedSprite
         private Explorer explorer;
         private Vector2 velocity;
         private int imageNumber = 1;
